@@ -10,24 +10,23 @@ class SeriesMatcherDPTest {
     void matchSeriesStraightMatch5() {
         int[] a = {5};
         int[] b = {5};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         assertEquals(0, c);
     }
 
     @Test
-    void matchSeriesStraightMatch56() {
-        int[] a = {5, 6};
+    void matchSeriesStraightMatch55() {
+        int[] a = {5, 5};
         int[] b = {5, 6};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         assertEquals(0, c);
     }
-
 
     @Test
     void matchSeriesStraightMatch303030() {
         int[] a = {30, 29, 32};
         int[] b = {10, 29, 32, 30};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         assertEquals(1, c);
     }
 
@@ -36,7 +35,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesOfficial() {
         int[] a = {4, 3, 8, 8, 1};
         int[] b = {3, 4, 8, 2};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(2, c);
     }
@@ -45,7 +44,7 @@ class SeriesMatcherDPTest {
     void testMatchSeries100() {
         int[] a = {100, 0, 0, 0, 0};
         int[] b = {0, 0, 0, 100};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(100, c);
     }
@@ -54,7 +53,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesTailMatch60() {
         int[] a = {100, 10, 20, 30};
         int[] b = {1, 2, 3, 100, 0};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(60, c);
     }
@@ -63,7 +62,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesStraightMatch() {
         int[] a = {1, 10, 11, 30};
         int[] b = {1, 10, 11, 30};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(0, c);
     }
@@ -80,7 +79,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesJaggedMatch() {
         int[] a = /***************/{10, 20, 30};
         int[] b = {11, 21, 31, 999, 10, 20, 30};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(0, c);
     }
@@ -94,7 +93,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesStraightMatch999() {
         int[] a = {10, 20, 30, 999};
         int[] b = {11, 21, 31, 999, 10, 20, 30};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(3, c);
     }
@@ -103,7 +102,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesJaggedMatch1020() {
         int[] a = /***********/{10, 20};
         int[] b = {11, 24, 999, 10, 20};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(0, c);
     }
@@ -112,7 +111,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesStraightMatch1020999() {
         int[] a = {10, 20, 999};
         int[] b = {11, 24, 999, 10, 20};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(5, c);
     }
@@ -121,7 +120,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesSraightMatch4410v10() {
         int[] a = {4, 4, 10};
         int[] b = {10};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(12, c);
     }
@@ -130,7 +129,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesSraightMatch4410v104() {
         int[] a = {4, 4, 10};
         int[] b = {10, 4};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(6, c);
     }
@@ -139,7 +138,7 @@ class SeriesMatcherDPTest {
     void testMatchSeriesSraightMatch4410v10410() {
         int[] a = {4, 4, 10};
         int[] b = {10, 4, 10};
-        int c = SeriesMatcher.matchSeries(a, b);
+        int c = SeriesMatcherDP.matchSeries(a, b);
         System.out.println("c: " + c);
         assertEquals(0, c);
     }

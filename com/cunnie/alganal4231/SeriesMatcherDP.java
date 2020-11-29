@@ -22,12 +22,19 @@ public class SeriesMatcherDP {
             C[i][0] = 0;
         }
         System.arraycopy(a0, 0, a, 1, a0.length);
-        System.arraycopy(b0, 0, b, 1, a0.length);
-        int minValue = Integer.MAX_VALUE;
+        System.arraycopy(b0, 0, b, 1, b0.length);
+        int minCost = Integer.MAX_VALUE;
+        int[] minF = null;
         for (int j = 1; j <= m; j++) {
             int i = 1;
-            C[i][j] = Math.abs(a[i] - b[j]);
-            F[i][j] = new int[]{j};
+            int costij = Math.abs(a[i] - b[j]);
+            if (costij < minCost) {
+                minCost = costij;
+                minF = new int[i + 1];
+                minF[i] = j;
+            }
+            C[i][j] = minCost;
+            F[i][j] = minF;
         }
         for (int i = 2; i <= n; i++) {
             // new value to compare:  a[i]
@@ -35,54 +42,52 @@ public class SeriesMatcherDP {
                 int baseCost = C[i - 1][j];
                 int[] fcurrent = new int[i + 1];
                 int[] fmin = new int[i + 1];
-                System.arraycopy(F[i][j - 1], 1, fcurrent, 1, F[i][j - 1].length);
+                System.arraycopy(F[i - 1][j], 1, fcurrent, 1, i - 1);
                 // new value to compare against:  b[j]
                 fcurrent[i] = j;
                 int currentCost = baseCost + Math.abs(a[i] - b[j]);
-                int minCost = currentCost;
-                System.arraycopy(fcurrent, 1, fmin, 1, fcurrent.length);
-                // 1. Compare all the a values against b[j]
+                minCost = currentCost;
+                System.out.println("fmin.length: " + fmin.length);
+                System.arraycopy(fcurrent, 1, fmin, 1, i);
+                // 1. Compare all the current a values against b[j]
                 for (int iprime = i - 1; iprime >= 1; iprime--) {
                     fcurrent[iprime] = j;
                     currentCost = cost1(a, fcurrent, b);
                     if (currentCost < minCost) {
                         minCost = currentCost;
-                        System.arraycopy(fcurrent, 1, fmin, 1, fcurrent.length);
-                    }
-                }
-                // compare a[i] back to b[1]
-                for (int jprime = i - 1; jprime >= 1; jprime--) {
-                    System.arraycopy(F[i][jprime], 1, fcurrent, 1, F[i][jprime].length);
-                    for (int iprime = i; iprime <= jprime; i--) {
-                        fcurrent[iprime] = jprime;
-                        int cost = cost1(a, fcurrent, b);
-                        if (cost < minCost) {
-                            minCost = cost;
-                            System.arraycopy(fcurrent, 1, fmin, 1, fcurrent.length);
+                        System.arraycopy(fcurrent, 1, fmin, 1, i);
+                        System.out.println("fmin.length: " + fmin.length);
+                        for (int f : fmin) {
+                            System.out.println("f: " + f);
                         }
                     }
                 }
+
+                // compare a[i] back to b[1]
+                for (int jprime = j - 1; jprime >= 1; jprime--) {
+                    System.arraycopy(F[i][jprime], 1, fcurrent, 1, i - 1);
+                    fcurrent[i] = jprime;
+                    currentCost = cost1(a, fcurrent, b);
+                    if (currentCost < minCost) {
+                        minCost = currentCost;
+                        System.arraycopy(fcurrent, 1, fmin, 1, i);
+                        System.out.println("fmin.length: " + fmin.length);
+                        for (int f : fmin) {
+                            System.out.println("f: " + f);
+                        }
+                    }
+                }
+
+                C[i][j] = minCost;
                 F[i][j] = fmin;
             }
         }
-        return C[a.length][b.length];
+        return C[a.length - 1][b.length - 1];
     }
-
-    /*
-            10 20 30  999
-             |  |  |    |
-    11       1 10 29 1017
-    21       1  2 11  989
-    31       1  2  3  971
-    999      1  2  3    3
-    10       0  2  3    3
-    20       0  0  3    3
-    30       0  0  0    3
-     */
 
     private static int cost1(int[] a, int[] f, int[] b) {
         int summedDifference = 0;
-        for (int i = 0; i < f.length; i++) {
+        for (int i = 1; i < f.length; i++) {
             summedDifference += Math.abs(a[i] - b[f[i]]);
         }
         return summedDifference;
