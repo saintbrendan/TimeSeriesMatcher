@@ -3,19 +3,16 @@ package com.cunnie.alganal4231;
 public class SeriesMatcher {
 
     public static int matchSeries(int[] a0, int[] b0) {
+        // change to 1-based arrays
         int[] a = new int[a0.length + 1];
         int[] b = new int[b0.length + 1];
         System.arraycopy(a0, 0, a, 1, a0.length);
         System.arraycopy(b0, 0, b, 1, b0.length);
+
         int[] f = new int[a.length];
-        int minValue = Integer.MAX_VALUE;
-        int i = 1;
-        for (int j = 1; j < b.length; j++) {
-            f[i] = j;
-            int value = matchSeriesRec(a, f, i + 1, b);
-            minValue = Math.min(minValue, value);
-        }
-        return minValue;
+        f[0] = 1;
+        int value = matchSeriesRec(a, f, 1, b);
+        return value;
     }
 
     public static int matchSeriesRec(int[] a, int[] f, int i, int[] b) {
