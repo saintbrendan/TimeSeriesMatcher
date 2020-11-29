@@ -10,7 +10,7 @@ public class SeriesMatcher {
         int[] f = new int[a.length];
         int minValue = Integer.MAX_VALUE;
         int i = 1;
-        for (int j = 1; j <= b.length; j++) {
+        for (int j = 1; j < b.length; j++) {
             f[i] = j;
             int value = matchSeriesRec(a, f, i + 1, b);
             minValue = Math.min(minValue, value);
