@@ -47,7 +47,6 @@ public class SeriesMatcherDP {
                 fcurrent[i] = j;
                 int currentCost = baseCost + Math.abs(a[i] - b[j]);
                 minCost = currentCost;
-                System.out.println("fmin.length: " + fmin.length);
                 System.arraycopy(fcurrent, 1, fmin, 1, i);
                 // 1. Compare all the current a values against b[j]
                 for (int iprime = i - 1; iprime >= 1; iprime--) {
@@ -56,10 +55,6 @@ public class SeriesMatcherDP {
                     if (currentCost < minCost) {
                         minCost = currentCost;
                         System.arraycopy(fcurrent, 1, fmin, 1, i);
-                        System.out.println("fmin.length: " + fmin.length);
-                        for (int f : fmin) {
-                            System.out.println("f: " + f);
-                        }
                     }
                 }
 
@@ -71,13 +66,8 @@ public class SeriesMatcherDP {
                     if (currentCost < minCost) {
                         minCost = currentCost;
                         System.arraycopy(fcurrent, 1, fmin, 1, i);
-                        System.out.println("fmin.length: " + fmin.length);
-                        for (int f : fmin) {
-                            System.out.println("f: " + f);
-                        }
                     }
                 }
-
                 C[i][j] = minCost;
                 F[i][j] = fmin;
             }
