@@ -11,7 +11,6 @@ class SeriesMatcherTest {
         int[] a = {4, 3, 8, 8, 1};
         int[] b = {3, 4, 8, 2};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(2, c);
     }
 
@@ -20,7 +19,6 @@ class SeriesMatcherTest {
         int[] a = {100, 0, 0, 0, 0};
         int[] b = {0, 0, 0, 100};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(100, c);
     }
 
@@ -29,7 +27,6 @@ class SeriesMatcherTest {
         int[] a = {100, 10, 20, 30};
         int[] b = {1, 2, 3, 100, 0};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(60, c);
     }
 
@@ -38,7 +35,6 @@ class SeriesMatcherTest {
         int[] a = {1, 10, 11, 30};
         int[] b = {1, 10, 11, 30};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(0, c);
     }
 
@@ -55,7 +51,6 @@ class SeriesMatcherTest {
         int[] a = /***************/{10, 20, 30};
         int[] b = {11, 21, 31, 999, 10, 20, 30};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(0, c);
     }
 
@@ -69,7 +64,6 @@ class SeriesMatcherTest {
         int[] a = {10, 20, 30, 999};
         int[] b = {11, 21, 31, 999, 10, 20, 30};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(3, c);
     }
 
@@ -78,7 +72,6 @@ class SeriesMatcherTest {
         int[] a = /***********/{10, 20};
         int[] b = {11, 24, 999, 10, 20};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(0, c);
     }
 
@@ -87,7 +80,6 @@ class SeriesMatcherTest {
         int[] a = {10, 20, 999};
         int[] b = {11, 24, 999, 10, 20};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(5, c);
     }
 
@@ -96,7 +88,6 @@ class SeriesMatcherTest {
         int[] a = {4, 4, 10};
         int[] b = {10};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(12, c);
     }
 
@@ -105,7 +96,6 @@ class SeriesMatcherTest {
         int[] a = {4, 4, 10};
         int[] b = {10, 4};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(6, c);
     }
 
@@ -114,7 +104,6 @@ class SeriesMatcherTest {
         int[] a = {4, 4, 10};
         int[] b = {10, 4, 10};
         int c = SeriesMatcher.matchSeries(a, b);
-        System.out.println("c: " + c);
         assertEquals(0, c);
     }
 }
