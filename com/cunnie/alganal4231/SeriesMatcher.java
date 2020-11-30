@@ -25,7 +25,6 @@ public class SeriesMatcher {
             int value = matchSeriesRec(a, f, i + 1, b);
             minValue = Math.min(minValue, value);
         }
-
         return minValue;
     }
 
@@ -36,6 +35,5 @@ public class SeriesMatcher {
         }
         return summedDifference;
     }
-
 
 }

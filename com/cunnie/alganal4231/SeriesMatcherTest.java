@@ -16,8 +16,8 @@ class SeriesMatcherTest {
 
     @org.junit.jupiter.api.Test
     void testMatchSeries100() {
-        int[] a = {100, 0, 0, 0, 0};
-        int[] b = {0, 0, 0, 100};
+        int[] a = {100, 0, 0};
+        int[] b = {0, 0, 100};
         int c = SeriesMatcher.matchSeries(a, b);
         assertEquals(100, c);
     }
@@ -84,7 +84,7 @@ class SeriesMatcherTest {
     }
 
     @org.junit.jupiter.api.Test
-    void testMatchSeriesStraightMatch4410v10() {
+    void testMatchSeriesStraightMatchOnly1b() {
         int[] a = {4, 4, 10};
         int[] b = {10};
         int c = SeriesMatcher.matchSeries(a, b);
@@ -92,7 +92,7 @@ class SeriesMatcherTest {
     }
 
     @org.junit.jupiter.api.Test
-    void testMatchSeriesStraightMatch5v7() {
+    void testMatchSeriesStraightMatch1to1() {
         int[] a = {5};
         int[] b = {7};
         int c = SeriesMatcher.matchSeries(a, b);
