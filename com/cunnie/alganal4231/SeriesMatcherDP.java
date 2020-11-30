@@ -48,15 +48,6 @@ public class SeriesMatcherDP {
                 int currentCost = baseCost + Math.abs(a[i] - b[j]);
                 minCost = currentCost;
                 System.arraycopy(fcurrent, 1, fmin, 1, i);
-                // 1. Compare all the current a values against b[j]
-                for (int iprime = i - 1; iprime >= 1; iprime--) {
-                    fcurrent[iprime] = j;
-                    currentCost = cost1(a, fcurrent, b);
-                    if (currentCost < minCost) {
-                        minCost = currentCost;
-                        System.arraycopy(fcurrent, 1, fmin, 1, i);
-                    }
-                }
 
                 // compare a[i] back to b[1]
                 for (int jprime = j - 1; jprime >= 1; jprime--) {

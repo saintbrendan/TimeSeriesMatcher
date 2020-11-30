@@ -68,6 +68,14 @@ class SeriesMatcherTest {
     }
 
     @org.junit.jupiter.api.Test
+    void testMatchSeriesLargeMismatch() {
+        int[] a = {10, 20, 30, 999};
+        int[] b = {11, 21, 31,};
+        int c = SeriesMatcher.matchSeries(a, b);
+        assertEquals(971, c);
+    }
+
+    @org.junit.jupiter.api.Test
     void testMatchSeriesJaggedMatch1020() {
         int[] a = /***********/{10, 20};
         int[] b = {11, 24, 999, 10, 20};
